@@ -1,3 +1,52 @@
-<p>
-  login works!
-</p>
+<div class="container">
+<!-- Grid row -->
+<div class="row justify-content-md-center" style="padding-top: 15%">
+
+    <!-- Grid column -->
+    <div class="col-lg-4 col-md-12">
+
+        <!--Panel-->
+        <div class="card card-body">
+            <h3 class="card-title text-center font-weight-bold">Sign In</h3>
+            <h4 class="card-title text-center ">Life Emergency Application</h4>
+            <!-- Default form login -->
+<!-- Material form login -->
+
+<form>
+
+    <!-- Material input email -->
+    <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <input type="email" id="materialFormLoginEmailEx" class="form-control" (focus)="focusFunction(0)" (focusout)="focusOutFunction(0)" required>
+        <label for="materialFormLoginEmailEx mdbActive" [ngClass]="{'active': state[0] }" >Your email</label>
+    </div>
+
+    <!-- Material input password -->
+    <div class="md-form">
+        <i class="fa fa-lock prefix grey-text"></i>
+        <input type="password" id="materialFormLoginPasswordEx" class="form-control"  (focus)="focusFunction(1)" (focusout)="focusOutFunction(1)" required>
+        <label for="materialFormLoginPasswordEx" [ngClass]="{'active':  state[1] }"  >Your password</label>
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-default" type="submit">Login</button>
+    </div>
+    <div class="text-center mt-4">
+        <a routerLink="/register" >Sign Up Here !</a>
+    </div>
+    
+</form>
+<!-- Material form login -->
+                      
+                      
+
+        </div>
+        <!--/.Panel-->
+
+    </div>
+    <!-- Grid column -->
+
+
+</div>
+<!-- Grid row -->
+</div>
