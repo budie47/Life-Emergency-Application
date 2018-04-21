@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
+  menu_state = false
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleMenu(){
+    this.menu_state = !this.menu_state; 
   }
 
 }

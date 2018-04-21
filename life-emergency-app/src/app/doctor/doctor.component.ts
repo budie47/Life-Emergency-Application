@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doctor.component.scss']
 })
 export class DoctorComponent implements OnInit {
+  menu_state = false
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleMenu(){
+    this.menu_state = !this.menu_state; 
   }
 
 }
