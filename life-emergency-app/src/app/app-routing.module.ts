@@ -22,7 +22,12 @@ const routes: Routes = [
     {
         path:'doctor-dashboard',
         component:DoctorComponent
-    }
+    },
+    { 
+        path: '',
+        redirectTo: '/login',
+        pathMatch: 'full'
+    },
 ]
 
 @NgModule({

@@ -18,8 +18,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule
+    AppRoutingModule
+ 
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],
