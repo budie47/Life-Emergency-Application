@@ -1,7 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 .main-box{
-    padding: 10px;
-    margin: 15px;
- 
+    padding: 25px;
 }
-    
+
+.float-right{
+    float: right;
+}
+.float-left{
+    float: left;
+}
+.btn-bulat {
+    border-radius: 12px;
+}    
