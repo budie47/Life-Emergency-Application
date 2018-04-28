@@ -5,6 +5,8 @@ import { AdminComponent } from './admin/admin.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ManageHospitalComponent } from './manage-hospital/manage-hospital.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
 
 const routes: Routes = [
     {
@@ -17,7 +19,17 @@ const routes: Routes = [
     },
     {
         path:'admin-dashboard',
-        component:AdminComponent
+        component:AdminComponent,
+        children: [
+            {
+                path:'manage-hospital',
+                component: ManageHospitalComponent
+            },
+            {
+                path:'manage-user',
+                component:ManageUserComponent
+            }
+        ]
     },
     {
         path:'doctor-dashboard',
@@ -41,4 +53,4 @@ const routes: Routes = [
 
   export class AppRoutingModule { }
 
-  export const routingComponents = [LoginComponent,RegisterComponent,AdminComponent,DoctorComponent]
+  export const routingComponents = [LoginComponent,RegisterComponent,AdminComponent,DoctorComponent,ManageHospitalComponent,ManageUserComponent]
