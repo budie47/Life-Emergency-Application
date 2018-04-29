@@ -1,5 +1,3 @@
-
-
 <!-- Card -->
 <div class="card">
 
@@ -10,80 +8,120 @@
     <!-- Title -->
     <div>
       <h4 class="card-title">
-        <a>Manage Hospital</a> 
-        <a class="btn btn-primary red darken-4 float-right">
-            <i class="fa fa-plus" aria-hidden="true"></i> Button</a>
+        <a>Manage Hospital</a>
+        <button class="btn btn-primary red darken-4 float-right" data-toggle="modal" data-target="#add-hospital">
+          <i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
       </h4>
     </div>
-    
+
     <!-- Text -->
     <p class="card-text">List of Hospital</p>
     <!--Table-->
-<table class="table table-striped table-responsive-md btn-table">
+    <table class="table table-striped table-responsive-md btn-table">
 
-    <!--Table head-->
-    <thead>
+      <!--Table head-->
+      <thead>
         <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+          <th>#</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>District</th>
+          <th>Postcode</th>
+          <th>State</th>
+          <th>Action</th>
         </tr>
-    </thead>
-    <!--Table head-->
+      </thead>
+      <!--Table head-->
 
-    <!--Table body-->
-    <tbody>
+      <!--Table body-->
+      <tbody>
         <tr>
-            <th scope="row">1</th>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <button type="button" class="btn btn-primary btn-rounded btn-sm my-0 btn-bulat">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
+          <th scope="row">1</th>
+          <td>HOSP-00010001</td>
+          <td>Hospital Putrajaya</td>
+          <td>Jalan P9, Pusat Pentadbiran Kerajaan Persekutuan </td>
+          <td>Presint 7</td>
+          <td>62250</td>
+          <td>Putrajaya</td>
+          <td>
+            <button type="button" class="btn btn-primary btn-rounded btn-sm my-0 btn-bulat">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
             <button type="button" class="btn btn-danger btn-rounded btn-sm my-0 btn-bulat">
-                <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
-          </td>
-
-        </tr>
-        
-        <tr>
-            <th scope="row">1</th>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <button type="button" class="btn btn-primary btn-rounded btn-sm my-0 btn-bulat">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-            <button type="button" class="btn btn-danger btn-rounded btn-sm my-0 btn-bulat">
-                <i class="fa fa-trash" aria-hidden="true"></i>
+              <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
           </td>
 
         </tr>
         <tr>
-            <th scope="row">1</th>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>
-              <button type="button" class="btn btn-primary btn-rounded btn-sm my-0 btn-bulat">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
+          <th scope="row">1</th>
+          <td>HOSP-00010001</td>
+          <td>Hospital Putrajaya</td>
+          <td>Jalan P9, Pusat Pentadbiran Kerajaan Persekutuan </td>
+          <td>Presint 7</td>
+          <td>62250</td>
+          <td>Putrajaya</td>
+          <td>
+            <button type="button" class="btn btn-primary btn-rounded btn-sm my-0 btn-bulat">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
             <button type="button" class="btn btn-danger btn-rounded btn-sm my-0 btn-bulat">
-                <i class="fa fa-trash" aria-hidden="true"></i>
+              <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
           </td>
 
         </tr>
-    </tbody>
-    <!--Table body-->
 
-</table>
-<!--Table-->
+        <tr>
+          <th scope="row">1</th>
+          <td>HOSP-00010001</td>
+          <td>Hospital Putrajaya</td>
+          <td>Jalan P9, Pusat Pentadbiran Kerajaan Persekutuan </td>
+          <td>Presint 7</td>
+          <td>62250</td>
+          <td>Putrajaya</td>
+          <td>
+            <button type="button" class="btn btn-primary btn-rounded btn-sm my-0 btn-bulat">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-danger btn-rounded btn-sm my-0 btn-bulat">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </td>
+
+        </tr>
+
+
+
+      </tbody>
+      <!--Table body-->
+
+    </table>
+    <!--Table-->
     <!-- Button -->
-    
+
+
+    <!-- Modal -->
+    <div class="modal fade " id="add-hospital" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Hospital</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 
