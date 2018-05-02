@@ -27,7 +27,8 @@ const routes: Routes = [
             },
             {
                 path:'manage-user',
-                component:ManageUserComponent
+                component:ManageUserComponent,
+                
             }
         ]
     },

@@ -36,14 +36,14 @@
 
       <!--Table body-->
       <tbody>
-        <tr>
+        <tr *ngFor="let doctor of doctors">
           <th scope="row">1</th>
-          <td>DOC-021123</td>
-          <td>Polan bin Si Polan</td>
-          <td>Dr Prof </td>
-          <td>polan46</td>
-          <td>Active</td>
-          <td>Hospital Putrajaya</td>
+          <td>{{ doctor.DocID }}</td>
+          <td>{{ doctor.Name }}</td>
+          <td>{{ doctor.Username }}</td>
+          <td>{{ doctor.Title }}</td>
+          <td>{{ doctor.Status }}</td>
+          <td>{{ doctor.HospID }}</td>
           <td>
             <button type="button" class="btn btn-primary btn-rounded btn-sm my-0 btn-bulat">
               <i class="fa fa-pencil" aria-hidden="true"></i>

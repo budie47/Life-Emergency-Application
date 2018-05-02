@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Route, Router } from '@angular/router';
+import { DoctorComponent } from '../doctor/doctor.component';
 
 @Component({
   selector: 'app-admin',
@@ -13,6 +14,7 @@ export class AdminComponent implements OnInit {
   constructor(private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit() {
+    console.log("this from admin component")
   }
 
   toggleMenu(){
@@ -25,6 +27,8 @@ export class AdminComponent implements OnInit {
 
   showManageUser(){
     this.router.navigate(['manage-user'],{relativeTo:this.route});
+    
+    
   }
 
  

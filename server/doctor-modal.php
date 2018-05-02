@@ -24,7 +24,7 @@ class Doctors{
   }
   //Update user
   function updateDoctor($data){
-    global $conn;s
+    global $conn;
     $query = "UPDATE LEA_Doctor SET `Name` = '".$data->Name."' , `Title` = '".$data->Title."', `Username`='".$data->Username."', `Password` = '".$data->Password."', `Status` = '".$data->Status."', `HospID` = '".$data->HospID."' WHERE `DocID`= '".$data->DocID."'";
     echo $result=mysqli_query($conn, $query);
     header('Content-Type: application/json');
