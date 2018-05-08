@@ -10,6 +10,10 @@ import { ManageHospitalComponent } from './manage-hospital/manage-hospital.compo
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { DbOperationsService } from './db-operations.service';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './auth/auth.guard';
+
+
 
 
 
@@ -20,15 +24,18 @@ import { DbOperationsService } from './db-operations.service';
     ManageHospitalComponent,
     ManageUserComponent,
     
+    
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [DbOperationsService],
+  providers: [DbOperationsService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,19 +14,18 @@
 
 
 <!-- Default form login -->
-<form>  
+<form (ngSubmit)="login()" #loginForm="ngForm">  
         <!-- Default input email -->
-        <label for="defaultFormLoginEmailEx" class="grey-text">Your email</label>
-        <input type="email" id="defaultFormLoginEmailEx" class="form-control">
-    
+        <label for="defaultFormLoginEmailEx" class="grey-text">Your username</label>
+        <input type="text" id="defaultFormLoginEmailEx" class="form-control" [(ngModel)]="model.username" name="username" #username="ngModel" required>
         <br>
     
         <!-- Default input password -->
-        <label for="defaultFormLoginPasswordEx" class="grey-text">Your password</label>
-        <input type="password" id="defaultFormLoginPasswordEx" class="form-control">
+        <label for="defaultFormLoginPasswordEx" class="grey-text"  >Your password</label>
+        <input type="password" id="defaultFormLoginPasswordEx" class="form-control" [(ngModel)]="model.password" name="password" #password="ngModel">
     
         <div class="text-center mt-4">
-            <button class="btn btn-indigo" type="submit">Login</button>
+            <button class="btn btn-indigo" type="submit" [disabled]="!loginForm.valid">Login</button>
         </div>
         <div class="text-center mt-4">
                 <a routerLink="/register">Sign Up Here !</a>

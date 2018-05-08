@@ -9,7 +9,7 @@
     <div>
       <h4 class="card-title">
         <a>Manage User</a>
-        <button class="btn btn-primary red darken-4 float-right" data-toggle="modal" data-target="#add-user">
+        <button class="btn btn-primary red darken-4 float-right" data-toggle="modal" data-target="#add-edit-user">
           <i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
       </h4>
     </div>
@@ -40,8 +40,8 @@
           <th scope="row">1</th>
           <td>{{ doctor.DocID }}</td>
           <td>{{ doctor.Name }}</td>
-          <td>{{ doctor.Username }}</td>
           <td>{{ doctor.Title }}</td>
+          <td>{{ doctor.Username }}</td>
           <td>{{ doctor.Status }}</td>
           <td>{{ doctor.HospID }}</td>
           <td>
@@ -66,17 +66,59 @@
 
 
     <!-- Modal -->
-    <div class="modal fade " id="add-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+    <div class="modal fade " id="add-edit-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Detail User</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            ...
+            <div class="form-group">
+              <label for="name">Name </label>
+              <input required minlength="3" ngModel name="Name" #Name="ngModel" type="text" id="Name" class="form-control">
+              <div class="alert alert-danger" *ngIf="Name.touched && !Name.valid">
+                <div *ngIf="Name.errors.required">Name are required</div>
+                <div *ngIf="Name.errors.minlength">Name should be minimum {{Name.errors.minlength.requiredLength}} character</div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="Title">Title</label>
+              <input ngModel name="Title" #Title="ngModel" type="text" id="title" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input required minlength="3" ngModel name="Username" #Username="ngModel" type="text" id="username" class="form-control">
+              <div class="alert alert-danger" *ngIf="Username.touched && !Username.valid">
+                <div *ngIf="Username.errors.required">Name are required</div>
+                <div *ngIf="Username.errors.minlength">Name should be minimum {{Username.errors.minlength.requiredLength}} character</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" required minlength="3" ngModel name="Password" #Password="ngModel"  id="password" class="form-control">
+
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" required minlength="3" ngModel name="confirmPassword" #confirmPassword="ngModel" id="confirmPassword" class="form-control">
+              <div *ngIf="confirmPassword.touched && Password.value != confirmPassword.value">
+                <div class="alert alert-danger"  >
+                  <div>Password does not match</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="status">Status</label>
+              <input type="text" id="status" class="form-control">
+              
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

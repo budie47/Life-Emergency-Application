@@ -1,63 +1,92 @@
-
 <div class="container">
     <!-- Grid row -->
     <div class="row justify-content-md-center" style="padding-top: 5%">
-    
+
         <!-- Grid column -->
         <div class="col-lg-8 col-md-12">
-    
+
             <!--Panel-->
             <div class="card card-body">
                 <h3 class="card-title text-center font-weight-bold">Sign Up</h3>
                 <h4 class="card-title text-center ">Life Emergency Application</h4>
                 <!-- Default form login -->
-    <!-- Material form login -->
-    
-    
-    <!-- Default form login -->
-    <form>  
-            <!-- Default input email -->
-            <label for="defaultFormRegisterEmailEx" class="grey-text">Your email</label>
-            <input type="email" id="defaultFormRegisterEmailEx" class="form-control">
-        
-            <br>
 
-                        <!-- Default input email -->
-                        <label for="defaultFormRegisterEmailEx" class="grey-text">Confirm Your email</label>
-                        <input type="email" id="defaultFormRegisterEmailEx" class="form-control">
-                    
-                        <br>
-        
-            <!-- Default input password -->
-            <label for="defaultFormRegisterPasswordEx" class="grey-text">Your password</label>
-            <input type="password" id="defaultFormRegisterPasswordEx" class="form-control">
+                <!-- Default form login -->
+                <form (ngSubmit)="register()" #registerForm="ngForm" >
 
-            <br>
+                    <!-- Default input email -->
+                    <label for="form-group" >Your Name</label>
+                    <input minlength="3" name="name"  type="text" id="name" #Name="ngModel" class="form-control" [(ngModel)]="model.name" required>
+                    <div class="alert alert-danger" *ngIf="Name.touched && !Name.valid">
+                        <div *ngIf="Name.errors.required">Name are required</div>
+                        <div *ngIf="Name.errors.minlength">Name should be minimum {{Name.errors.minlength.requiredLength}} character</div>
+                    </div>
 
-                        <!-- Default input email -->
-                        <label for="defaultFormRegisterEmailEx" class="grey-text">Confirm Your Password</label>
-                        <input type="email" id="defaultFormRegisterEmailEx" class="form-control">
-                    
-                        <br>
-        
-            <div class="text-center mt-4">
-                <button class="btn btn-indigo" type="submit">Register</button>
-            </div>
-            <div class="text-center mt-4">
-                    Already have account? <a routerLink="/login">Sign Up Here !</a>
-            </div>
-        </form>
-        <!-- Default form login -->
-                              
-    
+                    <br>
+
+                    <!-- Default input email -->
+                    <label for="form-group">Your Email</label>
+                    <input 
+                    minlength="3" 
+                    name="email"  
+                    type="email" 
+                    id="email"  
+                    #Email="ngModel" 
+                    class="form-control" 
+                    [(ngModel)]="model.email"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" 
+                    required>
+                    <div class="alert alert-danger" *ngIf="Email.touched && !Email.valid">
+                        <div *ngIf="Email.errors.required">Email are required</div>
+                        <div *ngIf="Email.errors && Email.errors.pattern">Email invalid</div>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input minlength="3" name="username" type="text" id="username" #Username="ngModel" class="form-control" [(ngModel)]="model.username" required >
+                        <div class="alert alert-danger" *ngIf="Username.touched && !Username.valid">
+                            <div *ngIf="Username.errors.required">Name are required</div>
+                            <div *ngIf="Username.errors.minlength">Name should be minimum {{Username.errors.minlength.requiredLength}} character</div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" minlength="3" name="password" #Password="ngModel" id="password" class="form-control" [(ngModel)]="model.password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" minlength="3" name="confirmPassword" #confirmPassword="ngModel" id="confirmPassword" class="form-control" [(ngModel)]="model.confirmPassword" required>
+                        <div *ngIf="confirmPassword.touched && Password.value != confirmPassword.value">
+                            <div class="alert alert-danger">
+                                <div>Password does not match</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-indigo" type="submit" [disabled]="!registerForm.valid">Register</button>
+                    </div>
+                    <div class="text-center mt-4">
+                        Already have account?
+                        <a routerLink="/login">Sign Up Here !</a>
+                    </div>
+                </form>
+                <!-- Default form login -->
+
+
             </div>
             <!--/.Panel-->
-    
+
         </div>
         <!-- Grid column -->
-    
-    
+
+
     </div>
     <!-- Grid row -->
-    </div>
-    
+</div>

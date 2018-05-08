@@ -1,6 +1,4 @@
-<style>
 
-    </style>
     
     <!--Navbar -->
     <nav class=" navbar navbar-expand-lg navbar-dark red darken-4">
@@ -18,19 +16,11 @@
             <a class="nav-link" href="#">
               <i class="fa fa-gear"></i> Settings</a>
           </li>
-    
-          <!-- Dropdown -->
-          <li class="nav-item dropdown" dropdown>
-            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-             <i class="fa fa-user"></i> Profile
-              <span class="caret"></span>
-            </a>
-            <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-              <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Account</a>
-              <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log Out</a>
-    
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">
+              <i class="fa fa-sign-out"></i> Log out</a>
           </li>
+    
         </ul>
       </div>
    
@@ -69,8 +59,3 @@
     
     </div>
     <!-- /#wrapper -->
-
-    <div class="main-box">
-      
-
-    </div>

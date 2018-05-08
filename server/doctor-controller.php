@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
 // Connect to database
-$conn = mysqli_connect('192.168.43.125','budie','abc123','life_emergency_application');
+$conn = mysqli_connect('localhost','dev','P@ssw0rd111','life_emergency_application');
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
@@ -39,8 +39,15 @@ switch($request_method)
     }
     break;
   case 'POST':
-    // Insert User
-    $doctor->saveDoctor($data);
+  
+    if($data->method == "register"){
+      //register doctor || add new doctor
+      $doctor->saveDoctor($data);
+    }elseif($data->method == "login"){
+      //login doctor
+      $doctor->login($data);
+    }
+    
     break;
   case 'PUT':
     $doctor->updateDoctor($data);

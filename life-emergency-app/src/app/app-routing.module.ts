@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ManageHospitalComponent } from './manage-hospital/manage-hospital.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
     {
@@ -20,6 +21,7 @@ const routes: Routes = [
     {
         path:'admin-dashboard',
         component:AdminComponent,
+        canActivate:[AuthGuard],
         children: [
             {
                 path:'manage-hospital',
@@ -34,6 +36,7 @@ const routes: Routes = [
     },
     {
         path:'doctor-dashboard',
+        canActivate:[AuthGuard],
         component:DoctorComponent
     },
     { 

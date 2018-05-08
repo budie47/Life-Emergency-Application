@@ -27,10 +27,11 @@ export class AdminComponent implements OnInit {
 
   showManageUser(){
     this.router.navigate(['manage-user'],{relativeTo:this.route});
-    
-    
   }
 
- 
+  logout(){
+    localStorage.removeItem('DocID');
+    this.router.navigate(['/']);
+  }
 
 }

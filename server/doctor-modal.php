@@ -17,8 +17,11 @@ class Doctors{
   //Save user
   function saveDoctor($data){
     global $conn;
-    $query = "INSERT INTO `LEA_Doctor` (`DocID`, `Name`, `Title`, `Username`, `Password`, `Status`, `HospID`) VALUES ('".$data->DocID."', '".$data->Name."', '".$data->Title."', '".$data->Username."', '".$data->Password."', '".$data->Status."', '".$data->HospID."');";
-    echo $result=mysqli_query($conn, $query);
+    $test = json_encode($data);
+    
+     $query = "INSERT INTO `LEA_Doctor` (`DocID`, `Name`, `Title`, `Username`, `Password`, `Status`, `HospID`,`datetime_register`) VALUES ('".$data->id."', '".$data->name."', '".$data->title."', '".$data->username."', '".$data->password."', '".$data->status."', '".$data->hospid."', NOW());";
+     echo $result=mysqli_query($conn, $query);
+   //echo $query;
     header('Content-Type: application/json');
     //Respond success / error messages
   }
@@ -37,6 +40,22 @@ class Doctors{
     echo $result=mysqli_query($conn, $query);
     header('Content-Type: application/json');
     //Respond success / error messages
+  }
+  
+  //Login doctor
+  function login($data){
+    global $conn;
+    
+    $query = "SELECT DocID, role FROM `LEA_Doctor` WHERE Username = '".$data->username."' AND Password = '".$data->password."'";
+    
+    $response=array();
+    $result=mysqli_query($conn, $query);
+    while($row = mysqli_fetch_assoc($result))
+    {
+      $response[]=$row;
+    }
+    header('Content-Type: application/json');
+    echo json_encode($response);
   }
 }
 

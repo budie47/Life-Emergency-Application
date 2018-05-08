@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DbOperationsService } from '../db-operations.service';
 import { Http,Response, Headers } from '@angular/http';
 
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+
 @Component({
   selector: 'app-manage-user',
   templateUrl: './manage-user.component.html',
@@ -25,6 +27,10 @@ export class ManageUserComponent implements OnInit {
      }
 
   ngOnInit() {
+  }
+
+  log(x){
+    console.log();
   }
 
 }
