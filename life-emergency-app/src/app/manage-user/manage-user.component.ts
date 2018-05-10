@@ -27,16 +27,7 @@ export class ManageUserComponent implements OnInit {
     saveDoctorFormGroup: FormGroup;
 
     constructor(private db:DbOperationsService, private http: Http) {
-      db.getDoctors().subscribe(
-        (response: Response) =>{
-          this.doctors = response.json();
-          
-          //console.log(this.doctors[0]);
-        },
-        (error) =>{
-          console.log(error);
-        }
-      )
+      this.loadDoctor();
      }
 
   ngOnInit() {
@@ -62,10 +53,11 @@ export class ManageUserComponent implements OnInit {
       this.model.method = "register";
       this.model.password = this.hashPassword;
       this.db.saveDoctor(this.model);
+      this.loadDoctor();
       alert("Registration Successfull");
       this.model = new Doctor(null,null,null,null,null,null,null,null,null);
-      this.saveDoctorFormGroup.markAsPristine();
-    
+      document.getElementById("saveDoctorForm").reset();
+      this.toggleUserModal("add-edit-user");
     }else{
       alert("Your password not match. Please check again");
     }
@@ -82,6 +74,12 @@ export class ManageUserComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  toggleUserModal(modalName:string){
+    $(function () {
+      $('#'+modalName).modal('toggle');
+   });
   }
 
 }
