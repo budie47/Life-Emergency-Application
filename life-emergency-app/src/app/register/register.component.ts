@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
     if(this.model.password == this.model.confirmPassword){
 
       this.hashPassword = shajs('sha256').update(this.model.password).digest('hex');
-      this.model.status = "registered";
+      this.model.status = "DOCTOR";
       this.model.id = uuid();
       this.model.method = "register";
       this.model.password = this.hashPassword;

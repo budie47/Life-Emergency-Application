@@ -9,7 +9,7 @@
     <div>
       <h4 class="card-title">
         <a>Manage User</a>
-        <button class="btn btn-primary red darken-4 float-right" data-toggle="modal" data-target="#add-edit-user">
+        <button class="btn btn-primary red darken-4 float-right" data-toggle="modal" data-target="#add-edit-user" (click)="fetchHospital()">
           <i class="fa fa-plus" aria-hidden="true"></i> Add New</button>
       </h4>
     </div>
@@ -69,61 +69,140 @@
     <div class="modal fade " id="add-edit-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Detail User</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="name">Name </label>
-              <input required minlength="3" ngModel name="Name" #Name="ngModel" type="text" id="Name" class="form-control">
-              <div class="alert alert-danger" *ngIf="Name.touched && !Name.valid">
-                <div *ngIf="Name.errors.required">Name are required</div>
-                <div *ngIf="Name.errors.minlength">Name should be minimum {{Name.errors.minlength.requiredLength}} character</div>
+          <form (ngSubmit)="saveDoctor()" #saveDoctorForm="ngForm" >
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Doctor Detail</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <div class="row">
+
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                    <select class="form-control" name="title" type="text" id="title" #Title="ngModel" class="form-control" [(ngModel)]="model.title">
+                      <option>Dr</option>
+                      <option>Mrs</option>
+                      <option>Assoc Dr</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-10">
+
+                  <label for="form-group">Your Name</label>
+                  <input minlength="3" name="name" type="text" id="name" #Name="ngModel" class="form-control" [(ngModel)]="model.name" required>
+                  <div class="alert alert-danger" *ngIf="Name.touched && !Name.valid">
+                    <div *ngIf="Name.errors.required">Name are required</div>
+                    <div *ngIf="Name.errors.minlength">Name should be minimum {{Name.errors.minlength.requiredLength}} character</div>
+                  </div>
+                </div>
+
               </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="Title">Title</label>
-              <input ngModel name="Title" #Title="ngModel" type="text" id="title" class="form-control">
-            </div>
 
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input required minlength="3" ngModel name="Username" #Username="ngModel" type="text" id="username" class="form-control">
-              <div class="alert alert-danger" *ngIf="Username.touched && !Username.valid">
-                <div *ngIf="Username.errors.required">Name are required</div>
-                <div *ngIf="Username.errors.minlength">Name should be minimum {{Username.errors.minlength.requiredLength}} character</div>
-              </div>
-            </div>
+              <div class="row">
+                <div class="col-md-6">
 
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" required minlength="3" ngModel name="Password" #Password="ngModel"  id="password" class="form-control">
 
-            </div>
-            <div class="form-group">
-              <label for="confirmPassword">Confirm Password</label>
-              <input type="password" required minlength="3" ngModel name="confirmPassword" #confirmPassword="ngModel" id="confirmPassword" class="form-control">
-              <div *ngIf="confirmPassword.touched && Password.value != confirmPassword.value">
-                <div class="alert alert-danger"  >
-                  <div>Password does not match</div>
+
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input minlength="3" name="username" type="text" id="username" #Username="ngModel" class="form-control" [(ngModel)]="model.username"
+                      required>
+                    <div class="alert alert-danger" *ngIf="Username.touched && !Username.valid">
+                      <div *ngIf="Username.errors.required">Name are required</div>
+                      <div *ngIf="Username.errors.minlength">Name should be minimum {{Username.errors.minlength.requiredLength}} character</div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+
+                  <!-- Default input email -->
+                  <label for="form-group">Your Email</label>
+                  <input minlength="3" name="email" type="email" id="email" #Email="ngModel" class="form-control" [(ngModel)]="model.email"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                  <div class="alert alert-danger" *ngIf="Email.touched && !Email.valid">
+                    <div *ngIf="Email.errors.required">Email are required</div>
+                    <div *ngIf="Email.errors && Email.errors.pattern">Email invalid</div>
+                  </div>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" minlength="3" name="password" #Password="ngModel" id="password" class="form-control" [(ngModel)]="model.password"
+                      required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" minlength="3" name="confirmPassword" #confirmPassword="ngModel" id="confirmPassword" class="form-control"
+                      [(ngModel)]="model.confirmPassword" required>
+                    <div *ngIf="confirmPassword.touched && Password.value != confirmPassword.value">
+                      <div class="alert alert-danger">
+                        <div>Password does not match</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select class="form-control" name="status" type="text" id="status" #Status="ngModel" class="form-control" [(ngModel)]="model.status">
+                          <option value="ACTIVE">Active</option>
+                          <option value="DEACTIVE">Deactive</option>
+                        </select>
+                      </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select class="form-control" name="role" type="text" id="role" #Role="ngModel" class="form-control" [(ngModel)]="model.role">
+                          <option value="DOCTOR">DOCTOR</option>
+                          <option value="ADMINISTRATOR">ADMINISTRATOR</option>
+                        </select>
+                      </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="role">Hospital</label>
+                        <select class="form-control" name="hospital" type="text" id="hospital" #Hospital="ngModel" class="form-control" [(ngModel)]="model.hospid">
+                          
+                          <option *ngFor="let hospital of hospitals" value="{{hospital.HospID}}">{{hospital.Name}}</option>
+                          
+                        </select>
+                      </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
             </div>
-            
-            <div class="form-group">
-              <label for="status">Status</label>
-              <input type="text" id="status" class="form-control">
-              
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" type="submit">Save changes</button>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

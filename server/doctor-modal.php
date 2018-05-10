@@ -19,9 +19,9 @@ class Doctors{
     global $conn;
     $test = json_encode($data);
     
-     $query = "INSERT INTO `LEA_Doctor` (`DocID`, `Name`, `Title`, `Username`, `Password`, `Status`, `HospID`,`datetime_register`) VALUES ('".$data->id."', '".$data->name."', '".$data->title."', '".$data->username."', '".$data->password."', '".$data->status."', '".$data->hospid."', NOW());";
+     $query = "INSERT INTO `LEA_Doctor` (`DocID`, `Name`, `Title`, `Username`, `Password`, `Status`, `HospID`,`datetime_register`,`role`) VALUES ('".$data->id."', '".$data->name."', '".$data->title."', '".$data->username."', '".$data->password."', '".$data->status."', '".$data->hospid."', NOW(),'".$data->role."');";
      echo $result=mysqli_query($conn, $query);
-   //echo $query;
+    echo $query;
     header('Content-Type: application/json');
     //Respond success / error messages
   }

@@ -16,14 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
 // Connect to database
-$conn = mysqli_connect('192.168.43.125','budie','abc123','life_emergency_application');
+$conn = mysqli_connect('localhost','dev','P@ssw0rd111','life_emergency_application');
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-include_once('doctor-modal.php');
+
+ include_once('hospital-modal.php');
 $request_method = $_SERVER["REQUEST_METHOD"];
 $data = json_decode(file_get_contents("php://input"));
-$doctor = new Doctors;
+$hospital = new Hospital;
 switch($request_method)
 {
   case 'GET':
@@ -31,23 +32,23 @@ switch($request_method)
     if(!empty($_GET["user_id"]))
     {
       $user_id=intval($_GET["user_id"]);
-      $doctor->getDoctors($user_id);
+      $hospital->gethospitals($user_id);
     }
     else
     {
-      $doctor->getDoctors();
+      $hospital->gethospital();
     }
     break;
   case 'POST':
     // Insert User
-    $doctor->saveDoctor($data);
+    $hospital->savehospital($data);
     break;
   case 'PUT':
-    $doctor->updateDoctor($data);
+    $hospital->updatehospital($data);
     break;
   case 'DELETE':
     // Delete User
-    $doctor->deleteDoctor($data);
+    $hospital->deletehospital($data);
     break;
   default:
     // Invalid Request Method
