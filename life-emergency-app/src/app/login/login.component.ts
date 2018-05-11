@@ -37,8 +37,10 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('DocID',this.body[0].DocID);
           if(this.body[0].role == "ADMINISTRATOR"){
             this.router.navigate(['admin-dashboard']);
+            localStorage.setItem('role',"ADMINISTRATOR");
           }else{
             this.router.navigate(['doctor-dashboard']);
+            localStorage.setItem('role',"DOCTOR");
           }
         }
       },

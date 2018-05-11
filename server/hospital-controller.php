@@ -41,7 +41,14 @@ switch($request_method)
     break;
   case 'POST':
     // Insert User
-    $hospital->savehospital($data);
+
+    if($data->method == "insert"){
+      $hospital->saveHospital($data);
+    }elseif($data->method == "update"){
+      $hospital->updateHospital($data);
+    }elseif($data->method =="delete"){
+      $hospital->deleteHospital($data);
+    }
     break;
   case 'PUT':
     $hospital->updatehospital($data);

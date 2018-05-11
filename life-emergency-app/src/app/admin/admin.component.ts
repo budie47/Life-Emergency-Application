@@ -14,7 +14,9 @@ export class AdminComponent implements OnInit {
   constructor(private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit() {
-    console.log("this from admin component")
+    if(localStorage.getItem('role') != 'ADMINISTRATOR'){
+      this.router.navigate(['/doctor-dashboard'])
+    }
   }
 
   toggleMenu(){
@@ -31,6 +33,7 @@ export class AdminComponent implements OnInit {
 
   logout(){
     localStorage.removeItem('DocID');
+    localStorage.removeItem('role');
     this.router.navigate(['/']);
   }
 

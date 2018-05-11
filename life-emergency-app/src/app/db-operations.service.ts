@@ -24,13 +24,18 @@ export class DbOperationsService {
     return this.http.get(this.apiURL+this.moduleURL);
   }
 
-  loginDoctor(doctor: any){
-    
-    return this.http.post(this.apiURL, doctor);
-
+  getDoctor(id:string) {
+    const headers = new Headers();
+    this.moduleURL =  this.getControllerURL("doctor");
+    headers.append("Cache-Control", "no-cache");
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET, POST');
+    headers.append('Access-Control-Max-Age', '1728000');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.http.get(this.apiURL+this.moduleURL+"?id="+id);
   }
 
-  saveDoctor(doctor: any){
+  deleteDoctor(doctor: any){
     //console.log("this from db services");
     //console.log(doctor);
     this.moduleURL =  this.getControllerURL("doctor");
@@ -40,8 +45,6 @@ export class DbOperationsService {
     headers.append('Access-Control-Allow-Methods', 'GET, POST');
     headers.append('Access-Control-Max-Age', '1728000');
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
-    console.log(doctor);
 
     this.http.post(this.apiURL+this.moduleURL,doctor)
       .subscribe(
@@ -57,10 +60,44 @@ export class DbOperationsService {
       )
   }
 
+
+
+
+  loginDoctor(doctor: any){
+    this.moduleURL =  this.getControllerURL("doctor");
+    return this.http.post(this.apiURL+this.moduleURL, doctor);
+  }
+
+  saveDoctor(doctor: any){
+    //console.log("this from db services");
+    //console.log(doctor);
+    this.moduleURL =  this.getControllerURL("doctor");
+    const headers = new Headers();
+    headers.append("Cache-Control", "no-cache");
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET, POST');
+    headers.append('Access-Control-Max-Age', '1728000');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    this.http.post(this.apiURL+this.moduleURL,doctor)
+      .subscribe(
+        (val) => {
+          console.log("POST call successful value return in body", val)
+        },
+        response => {
+          console.log("POST call in error", response);
+        },
+        () =>{
+          console.log("The POST observable is now completed.");
+        }
+      )
+  }
+
+
+
   getHospitals() {
     const headers = new Headers();
     this.moduleURL =  this.getControllerURL("hospital");
-
     headers.append("Cache-Control", "no-cache");
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET, POST');
@@ -68,6 +105,32 @@ export class DbOperationsService {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     return this.http.get(this.apiURL+this.moduleURL);
   }
+
+  saveHospital(hospital: any){
+    //console.log("this from db services");
+    //console.log(doctor);
+    this.moduleURL =  this.getControllerURL("hospital");
+    const headers = new Headers();
+    headers.append("Cache-Control", "no-cache");
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET, POST');
+    headers.append('Access-Control-Max-Age', '1728000');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    this.http.post(this.apiURL+this.moduleURL,hospital)
+      .subscribe(
+        (val) => {
+          console.log("POST call successful value return in body", val)
+        },
+        response => {
+          console.log("POST call in error", response);
+        },
+        () =>{
+          console.log("The POST observable is now completed.");
+        }
+      )
+  }
+
 
 
   getControllerURL(module:string){

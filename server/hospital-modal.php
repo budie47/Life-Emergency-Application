@@ -17,24 +17,39 @@ class Hospital{
   //Save user
   function saveHospital($data){
     global $conn;
-    $query = "INSERT INTO `LEA_Hospital` (`DocID`, `Name`, `Title`, `Username`, `Password`, `Status`, `HospID`) VALUES ('".$data->DocID."', '".$data->Name."', '".$data->Title."', '".$data->Username."', '".$data->Password."', '".$data->Status."', '".$data->HospID."');";
-    echo $result=mysqli_query($conn, $query);
+    $query = "INSERT INTO `LEA_Hospital` (`id`, `name`, `address`, `district`, `state`, `postcode`) VALUES ('".$data->id."', '".$data->name."', '".$data->address."', '".$data->district."', '".$data->state."', '".$data->postcode."');;";
+    if($result=mysqli_query($conn, $query)){
+      echo "success";
+    }else{
+      echo "error";
+      //echo $query;
+    }
     header('Content-Type: application/json');
     //Respond success / error messages
   }
   //Update user
   function updateHospital($data){
     global $conn;
-    $query = "UPDATE LEA_Hospital SET `Name` = '".$data->Name."' , `Title` = '".$data->Title."', `Username`='".$data->Username."', `Password` = '".$data->Password."', `Status` = '".$data->Status."', `HospID` = '".$data->HospID."' WHERE `DocID`= '".$data->DocID."'";
-    echo $result=mysqli_query($conn, $query);
+    $query = "UPDATE `LEA_Hospital` SET `name` = '".$data->name."' , `address` = '".$data->address."', `district`='".$data->district."', `state` = '".$data->state."', `postcode` = '".$data->postcode."' WHERE `id`= '".$data->id."'";
+    if($result=mysqli_query($conn, $query)){
+      echo "success Update";
+    }else{
+      echo "error";
+      echo $query;
+    }
     header('Content-Type: application/json');
     //Respond success / error messages
   }
   //Delete user
   function deleteHospital($data){
     global $conn;
-    $query = "DELETE FROM LEA_Hospital WHERE DocID =".$data->id;
-    echo $result=mysqli_query($conn, $query);
+    $query = "DELETE FROM LEA_Hospital WHERE id ='".$data->id."'";
+    if($result=mysqli_query($conn, $query)){
+      echo "success";
+    }else{
+      echo "error";
+      echo $query;
+    };
     header('Content-Type: application/json');
     //Respond success / error messages
   }

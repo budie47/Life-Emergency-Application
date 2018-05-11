@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   doctors: any[] = [];
   hashPassword: string;
 
-  model = new Doctor(null,null,null,null,null,null,null,null,null);
+  model = new Doctor(null,null,null,null,null,null,null,null,null,null,null);
 
   constructor(private db:DbOperationsService, private http: Http, private router:Router) { 
 

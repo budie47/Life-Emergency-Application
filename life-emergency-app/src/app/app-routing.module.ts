@@ -9,6 +9,7 @@ import { ManageHospitalComponent } from './manage-hospital/manage-hospital.compo
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { AuthGuard } from './auth/auth.guard';
 
+
 const routes: Routes = [
     {
         path:'login',

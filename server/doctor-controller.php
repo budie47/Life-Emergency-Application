@@ -28,10 +28,10 @@ switch($request_method)
 {
   case 'GET':
     // Retrive Users
-    if(!empty($_GET["user_id"]))
+    if(!empty($_GET["id"]))
     {
-      $user_id=intval($_GET["user_id"]);
-      $doctor->getDoctors($user_id);
+      $user_id=$_GET["id"];
+      $doctor->getDoctor($user_id);
     }
     else
     {
@@ -46,6 +46,10 @@ switch($request_method)
     }elseif($data->method == "login"){
       //login doctor
       $doctor->login($data);
+    }elseif($data->method == "update"){
+      $doctor->updateDoctor($data);
+    }elseif($data->method =="delete"){
+      $doctor->deleteDoctor($data);
     }
     
     break;

@@ -8,8 +8,10 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):  boolean {
-      if(localStorage.getItem('DocID') != null)
-      return true;
+      if(localStorage.getItem('DocID') != null ){
+        return true;
+      }
+      
       this.router.navigate(['/']);
       return false
       

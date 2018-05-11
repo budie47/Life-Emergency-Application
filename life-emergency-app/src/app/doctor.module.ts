@@ -9,7 +9,9 @@ export class Doctor {
       public status: string,
       public hospid: string,
       public title: string,
-      public method: string
+      public method: string,
+      public role: string,
+      public email: string
     ) {  }
   
   }
